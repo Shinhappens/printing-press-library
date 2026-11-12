@@ -1,0 +1,34 @@
+name: your-golf-booking
+description: >
+  Read-only public occupancy for one Your Golf Booking / TrackMan booking
+  venue at a time. The caller supplies a venue slug or a public booking URL.
+  There is no public directory of every booking.trackmangolf.com venue.
+auth: none
+page:
+  host: https://booking.trackmangolf.com
+  paths:
+    - /venues/{slug}/booking
+    - /venues/{slug}/booking/bays
+    - /venues/{slug}/booking/simulators
+  payload: HTML __NEXT_DATA__.props.pageProps.initialReduxState
+  keeps:
+    - venue name, slug, timezone, currency, website, address
+    - bookable areas (ranges), opening hours, slot length, bays
+    - bay-option list prices and guest schedules
+  drops:
+    - payment configuration and processor account ids
+    - external facility, location, and bay ids
+api:
+  host: https://api.yourgolfbooking.com
+  bookings:
+    method: GET
+    path: /venue/{slug}/bookings/public
+    query: [start_gte, start_lte]
+    window: at most 24 hours; longer ranges return HTTP 400
+    history: past dates are accepted; an empty array means no public bookings in that window
+    fields: [start, end, status, bayRef, bayOptionId, playerOptions.quantity]
+    absent: customer name, email, phone, payment, receipt
+limits:
+  - no signed-in calls, checkout, cart, or booking creation
+  - no domain-wide venue crawl; /venues on the API is forbidden and there is no sitemap index
+  - list-price estimates use the booked option's public price and are not sales records
