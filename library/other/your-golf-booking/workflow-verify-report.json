@@ -1,0 +1,44 @@
+{
+  "cli": "your-golf-booking-pp-cli",
+  "verdict": "pass",
+  "checked_at": "2026-11-12T15:45:00Z",
+  "note": "Runtime checks against the signed-out public Forged Golf Club calendar. No customer fields are stored here.",
+  "commands": [
+    {
+      "command": "your-golf-booking-pp-cli doctor --venue https://booking.trackmangolf.com/venues/forged-golf-club/booking/simulators --json",
+      "result": "pass",
+      "ok": true,
+      "bookables": ["bays", "simulators"],
+      "sample_day": "2026-11-12"
+    },
+    {
+      "command": "your-golf-booking-pp-cli occupancy --venue https://booking.trackmangolf.com/venues/forged-golf-club/booking/simulators --from 2026-11-12 --to 2026-11-12 --json",
+      "result": "pass",
+      "open_slots": 192,
+      "booked_slots": 47,
+      "available_slots": 145,
+      "fill_rate": 0.2448,
+      "band": "quiet",
+      "public_price": "$30.00 per 30 minutes (card says $60.00/Hr)"
+    },
+    {
+      "command": "your-golf-booking-pp-cli summary --venue https://booking.trackmangolf.com/venues/forged-golf-club/booking/simulators --from 2026-11-06 --to 2026-11-12 --estimate-list-price --json",
+      "result": "pass",
+      "fill_rate": 0.256,
+      "band": "moderate",
+      "strongest_date": "2026-11-06",
+      "quietest_date": "2026-11-08",
+      "busiest_hour": "20:00",
+      "busiest_hour_fill": 0.7321,
+      "list_price_estimate_display": "$90.00",
+      "list_price_estimate_label": "Not a sales record or a receipt."
+    },
+    {
+      "command": "your-golf-booking-pp-cli summary --venue https://booking.trackmangolf.com/venues/forged-golf-club/booking/simulators --from 2026-08-01 --to 2026-08-01 --json",
+      "result": "pass",
+      "booked_slots": 39,
+      "fill_rate": 0.2031,
+      "history": "past date returned bookings"
+    }
+  ]
+}

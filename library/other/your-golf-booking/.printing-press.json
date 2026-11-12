@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-12T15:45:00Z",
+  "printing_press_version": "catalog-manual",
+  "api_name": "your-golf-booking",
+  "display_name": "Your Golf Booking",
+  "cli_name": "your-golf-booking-pp-cli",
+  "spec_format": "internal",
+  "spec_source": "internal-yaml",
+  "spec_checksum": "sha256:fc08f9121de61f39de17336bca3b4faa89b88d1005ead1ee45daec49248dbde7",
+  "description": "Read public Your Golf Booking and TrackMan bay occupancy, open slots, and list prices for one venue at a time.",
+  "auth_type": "none",
+  "owner_name": "Printing Press Library",
+  "novel_features": [
+    {
+      "name": "Public occupancy",
+      "command": "occupancy",
+      "description": "Available and booked bay slots for a date range, including past dates the public feed still returns."
+    },
+    {
+      "name": "Fill summary",
+      "command": "summary",
+      "description": "Fill rate by date, weekday, and hour, labeled quiet, moderate, or busy. Optional list-price estimate is not a sales total."
+    },
+    {
+      "name": "Venue card",
+      "command": "venue",
+      "description": "Public bookable areas, bays, opening hours, and guest list prices from the booking page."
+    }
+  ]
+}

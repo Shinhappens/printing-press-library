@@ -1,0 +1,18 @@
+{
+  "cli": "your-golf-booking-pp-cli",
+  "dir": "library/other/your-golf-booking",
+  "verdict": "PASS",
+  "checked_at": "2026-11-12T15:45:00Z",
+  "checks": [
+    {"name": "go test ./...", "result": "pass", "command": "cd library/other/your-golf-booking && go test ./..."},
+    {"name": "go vet ./...", "result": "pass", "command": "cd library/other/your-golf-booking && go vet ./..."},
+    {"name": "go build", "result": "pass", "command": "cd library/other/your-golf-booking && go build -o /tmp/your-golf-booking-pp-cli ./cmd/your-golf-booking-pp-cli"},
+    {"name": "--help", "result": "pass", "command": "/tmp/your-golf-booking-pp-cli --help"},
+    {"name": "--version", "result": "pass", "command": "/tmp/your-golf-booking-pp-cli --version", "output": "your-golf-booking-pp-cli 0.1.0"},
+    {"name": "verify_skill.py", "result": "pass", "command": "python3 .github/scripts/verify-skill/verify_skill.py --dir library/other/your-golf-booking"},
+    {"name": "live doctor", "result": "pass", "venue": "forged-golf-club", "sample_day": "2026-11-12"},
+    {"name": "live occupancy", "result": "pass", "from": "2026-11-12", "to": "2026-11-12", "booked_slots": 47, "available_slots": 145, "fill_rate": 0.2448},
+    {"name": "live summary", "result": "pass", "from": "2026-11-06", "to": "2026-11-12", "busiest_hour": "20:00", "strongest_date": "2026-11-06"},
+    {"name": "live past date", "result": "pass", "date": "2026-08-01", "booked_slots": 39}
+  ]
+}

@@ -139,6 +139,7 @@ var cliAuthorByAPIName = map[string]string{
 	"weather-goat":    "Trevin Chow",
 	"wikipedia":       "Hiten Shah",
 	"yahoo-finance":   "Trevin Chow",
+	"your-golf-booking": "Printing Press Library",
 }
 
 func main() {
